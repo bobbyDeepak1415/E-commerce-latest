@@ -37,7 +37,7 @@ function Footer() {
               <FaFacebook />
             </a>
             <a href="">
-              <FaTwitter />
+              <FaTwitter className="text-blue-500"/>
             </a>
             <a href="">
               <FaGithub />
