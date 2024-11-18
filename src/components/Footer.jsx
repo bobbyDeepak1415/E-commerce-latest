@@ -9,7 +9,7 @@ function Footer() {
         <div>
           <h3 className="text-xl font-semibold">e-shop</h3>
           <p className="mt-4">
-            Your one-step for all your needs.Shop with use and experience the
+            Your one stop for all your needs.Shop with use and experience the
             best online shopping experiences
           </p>
         </div>
