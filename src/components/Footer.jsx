@@ -9,8 +9,8 @@ function Footer() {
         <div>
           <h3 className="text-xl font-semibold">e-shop</h3>
           <p className="mt-4">
-            Your one stop for all your needs.Shop with use and experience the
-            best online shopping experiences
+            Your one stop for all your needs.Shop with us and have the best
+            online shopping experience
           </p>
         </div>
         <div className="flex flex-col md:items-center">
