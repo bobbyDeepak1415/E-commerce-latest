@@ -1,14 +1,23 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EmptyCart from "../assets/images/emptyCart.jpg";
 import { FaTrashAlt } from "react-icons/fa";
 import Modal from "../components/Modal";
 import ChangeAdress from "../components/ChangeAdress";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "../redux/cartSlice";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [adress, setAdress] = useState("main street,0043");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
+  const navigate=useNavigate()
+
   return (
     <div className="container mx-auto py-8 min-h-96 px-4 md:px-16 lg:px-24">
       {cart.products.length > 0 ? (
@@ -46,12 +55,25 @@ const Cart = () => {
                     <div className="flex space-x-12 items-center">
                       <p>${product.price}</p>
                       <div className="flex items-center justify-center border">
-                        <button className="text-xl px-2">-</button>
+                        <button
+                          className="text-xl px-2"
+                          onClick={() => dispatch(decreaseQuantity(product.id))}
+                        >
+                          -
+                        </button>
                         <p>{product.quantity}</p>
-                        <button className="text-xl px-1 border-1">+</button>
+                        <button
+                          className="text-xl px-1 border-1"
+                          onClick={() => dispatch(increaseQuantity(product.id))}
+                        >
+                          +
+                        </button>
                       </div>
                       <p>${(product.quantity * product.price).toFixed(2)}</p>
-                      <button className="text-red-500 hover:text-red-700">
+                      <button
+                        className="text-red-500 hover:text-red-700"
+                        onClick={() => dispatch(removeFromCart(product.id))}
+                      >
                         <FaTrashAlt />
                       </button>
                     </div>
@@ -82,13 +104,19 @@ const Cart = () => {
                 <span>Total Price:</span>
                 <span>{cart.totalPrice.toFixed(2)}</span>
               </div>
-              <button className="w-full bg-red-600 text-white py-2 hover:bg-red-800">
+              <button
+                onClick={() => navigate("/checkout")}
+                className="w-full bg-red-600 text-white py-2 hover:bg-red-800"
+              >
                 Proceed to checkout
               </button>
             </div>
           </div>
           <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-            <ChangeAdress />
+            <ChangeAdress
+              setAdress={setAdress}
+              setIsModalOpen={setIsModalOpen}
+            />
           </Modal>
         </div>
       ) : (
