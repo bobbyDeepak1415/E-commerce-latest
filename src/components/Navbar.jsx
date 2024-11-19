@@ -11,15 +11,14 @@ function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [search, setSearch] = useState();
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSearch=(e)=>{
-   e.preventDefault()
-   dispatch(setSearchTerm(search))
-   navigate('/filter-data')
-
-  }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(setSearchTerm(search));
+    navigate("/filter-data");
+  };
 
   const openSignUp = () => {
     setIsLogin(false);
@@ -28,7 +27,6 @@ function Navbar() {
   const openLogin = () => {
     setIsLogin(true);
     setIsModalOpen(true);
-    alert("boo")
   };
 
   const products = useSelector((state) => state.cart.products);
@@ -43,7 +41,7 @@ function Navbar() {
           <form onSubmit={handleSearch}>
             <input
               className="w-full border py-2 px-4"
-              onChange={(e)=>setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               type="text"
               placeholder="Search Products"
             />
