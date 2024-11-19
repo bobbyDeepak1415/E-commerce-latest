@@ -28,6 +28,7 @@ function Navbar() {
   const openLogin = () => {
     setIsLogin(true);
     setIsModalOpen(true);
+    alert("boo")
   };
 
   const products = useSelector((state) => state.cart.products);
