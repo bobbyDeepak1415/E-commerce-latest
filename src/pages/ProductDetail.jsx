@@ -29,12 +29,7 @@ const ProductDetail = () => {
             ${product.price}
           </p>
           <div className="flex items-center mb-4 gap-x-2">
-            <input
-              type="number"
-              id="quantity"
-              min="1"
-              className="border p-1 w-16"
-            />
+            <input type="number" id="quantity" className="border p-1 w-16" />
             <button className="bg-red-600 text-white py-1.5 px-4 hover:bg-red-800">
               Add To Cart
             </button>
