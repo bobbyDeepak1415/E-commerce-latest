@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Register = () => {
+const Register = ({openLogin}) => {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
@@ -25,7 +25,7 @@ const Register = () => {
       </form>
       <div className="text-center">
         <span className="text-gray-800">Already Have an Account?</span>
-        <button>Login</button>
+        <button className='text-red-800' onClick={openLogin}>Login</button>
       </div>
     </div>
   );
