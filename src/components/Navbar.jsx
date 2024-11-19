@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
+import Login from './Login'
+import Register from './Register'
 
 function Navbar() {
+
+const [isModalOpen,setIsModalOpen]=useState(false)
+const [isLogin,setIsLogin]=useState(true)
+
   const products = useSelector((state) => state.cart.products);
 
   return (
@@ -15,7 +22,7 @@ function Navbar() {
         <div className="relative flex-1 mx-4">
           <form>
             <input
-              className="w-full border py-2 px-4"
+              className="w-full border py-2 px-4" 
               type="search"
               placeholder="Search.."
             />
@@ -47,6 +54,9 @@ function Navbar() {
         <Link className="hover:underline">Contact</Link>
         <Link className="hover:underline">About</Link>
       </div>
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        {isLogin?<Login/> :<Register/>}
+      </Modal>
     </nav>
   );
 }

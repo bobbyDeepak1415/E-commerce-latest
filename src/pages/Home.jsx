@@ -22,7 +22,7 @@ function Home() {
         <div className="container mx-auto py-4 flex flex-col md:flex-row space-x-2">
           <div className="w-full md:w-3/12">
             <div className="bg-red-600 text-white text-xs font-bold px-2 py-2.5">
-              Shop by Categories
+              Shop By Categories
             </div>
             <ul className="space-4-4 bg-gray-100 p-3 border">
               {Categories.map((category, index) => {
